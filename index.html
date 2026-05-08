@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Tarang Music Player — Offline music with bookmarks</title>
+<meta name="description" content="Tarang is a clean, offline Android music player with audio bookmarks and one-tap clip export. No accounts, no cloud, no analytics, no ads." />
+<meta property="og:title" content="Tarang Music Player — Offline music with bookmarks" />
+<meta property="og:description" content="A clean, offline music player with bookmark tagging and per-tag clip export. Built with Material 3 and Media3." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#2E83A0" />
+<style>
+  :root {
+    --bg: #0B0C0D;
+    --surface: #1A1D21;
+    --surface-2: #22262B;
+    --rule: #2A2F36;
+    --text: #E8EDF2;
+    --dim: #8A9BAB;
+    --accent: #2E83A0;
+    --accent-soft: #5AAECC;
+    --gold: #EB9400;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 350;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: var(--accent-soft); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .container { max-width: 880px; margin: 0 auto; padding: 56px 24px; }
+  header { text-align: center; padding: 40px 0 24px; }
+  .logo { width: 144px; height: 144px; margin: 0 auto; display: block; border-radius: 32px; }
+  h1 {
+    font-size: 56px; font-weight: 200; letter-spacing: 6px;
+    margin: 24px 0 8px; text-transform: uppercase;
+  }
+  .tagline { color: var(--dim); font-size: 17px; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
+  h2 {
+    font-size: 13px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--accent-soft); margin: 56px 0 16px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+    scroll-margin-top: 24px;
+  }
+  h3 { font-size: 18px; font-weight: 500; margin: 16px 0 4px; }
+  p { color: var(--dim); }
+  p.lead { font-size: 18px; color: #D8DEE5; }
+  ul { color: var(--dim); padding-left: 20px; }
+  li { margin-bottom: 6px; }
+  strong { color: var(--text); font-weight: 500; }
+  em { color: var(--accent-soft); font-style: normal; }
+  .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .feature {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 20px 22px;
+  }
+  .feature h3 { color: var(--gold); margin-top: 0; }
+  .feature p { margin: 4px 0 0; font-size: 14px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 0; justify-content: center; }
+  .badge {
+    display: inline-block; padding: 4px 10px; border: 1px solid var(--rule);
+    border-radius: 999px; font-size: 11px; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--dim);
+  }
+  table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; }
+  th, td {
+    padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--rule);
+    color: var(--dim); vertical-align: top;
+  }
+  th { color: var(--text); font-weight: 500; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    background: var(--surface-2); padding: 2px 6px; border-radius: 4px; font-size: 13px;
+    color: var(--accent-soft);
+  }
+  .meta {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 10px;
+    padding: 12px 16px; margin: 16px 0; font-size: 14px; color: var(--dim);
+  }
+  footer {
+    margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--rule);
+    color: #5A6470; font-size: 13px; text-align: center;
+  }
+  @media (max-width: 600px) {
+    h1 { font-size: 38px; letter-spacing: 4px; }
+    .feature-grid { grid-template-columns: 1fr; }
+    .container { padding: 32px 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <svg class="logo" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="bg" x1="0" y1="-25.5" x2="529" y2="570.5" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#2E83A0"/>
+          <stop offset="1" stop-color="#1F6070"/>
+        </linearGradient>
+      </defs>
+      <rect width="512" height="512" fill="url(#bg)"/>
+      <g>
+        <path fill="#FFFFFF" d="M132.845 132.846C149.864 115.826 169.081 103.042 190.495 94.4927C211.91 85.941 233.704 81.6652 255.877 81.6652C278.047 81.663 299.839 85.8967 321.255 94.3663C342.669 102.834 361.886 115.577 378.905 132.596C385.652 139.344 391.819 146.59 397.404 154.336C402.987 162.08 408.005 170.256 412.458 178.866C414.255 182.323 414.385 185.802 412.847 189.302C411.308 192.798 408.786 195.07 405.279 196.118C401.556 197.382 397.879 197.228 394.247 195.658C390.617 194.085 387.839 191.505 385.911 187.918C382.288 181.37 378.32 175.098 374.008 169.105C369.693 163.113 364.927 157.509 359.709 152.291C330.757 123.339 296.187 108.863 256 108.863C215.812 108.863 181.243 123.339 152.291 152.291C123.339 181.243 108.863 215.813 108.863 256C108.863 296.187 123.339 330.757 152.291 359.709C181.243 388.661 215.812 403.137 256 403.137C296.187 403.137 330.757 388.661 359.709 359.709C365.061 354.357 369.939 348.681 374.345 342.681C378.748 336.683 382.678 330.359 386.135 323.709C388.062 320.118 390.775 317.58 394.273 316.096C397.771 314.607 401.315 314.479 404.906 315.71C408.497 316.938 410.994 319.326 412.396 322.876C413.801 326.424 413.647 329.885 411.936 333.26C407.997 341.619 403.319 349.588 397.903 357.165C392.484 364.744 386.484 371.825 379.903 378.406C362.799 395.509 343.499 408.378 322.001 417.011C300.503 425.645 278.606 429.983 256.311 430.024C234.016 430.065 212.119 425.85 190.621 417.381C169.123 408.916 149.864 396.174 132.845 379.154C115.826 362.135 103.062 342.898 94.554 321.444C86.0434 299.987 81.788 278.172 81.788 256C81.788 233.828 86.0434 212.013 94.554 190.556C103.062 169.102 115.826 149.865 132.845 132.846ZM419.04 234.185C425.107 234.185 430.26 236.305 434.499 240.544C438.736 244.781 440.855 249.933 440.855 256C440.855 262.067 438.736 267.219 434.499 271.456C430.26 275.695 425.107 277.815 419.04 277.815C412.975 277.812 407.824 275.693 403.587 271.456C399.348 267.217 397.228 262.065 397.225 256C397.228 249.935 399.348 244.783 403.587 240.544C407.824 236.307 412.975 234.188 419.04 234.185Z"/>
+        <path fill="#FFFFFF" d="M311.877 262.908L235.656 313.535C232.835 315.439 229.997 315.639 227.14 314.136C224.283 312.629 222.854 310.22 222.854 306.908V205.084C222.854 201.772 224.283 199.363 227.14 197.857C229.997 196.353 232.835 196.553 235.656 198.457L311.877 249.084C314.391 250.802 315.649 253.106 315.649 255.996C315.649 258.887 314.391 261.191 311.877 262.908Z"/>
+      </g>
+    </svg>
+    <h1>Tarang</h1>
+    <p class="tagline">Music Player</p>
+    <div class="badges">
+      <span class="badge">Android 8.0+</span>
+      <span class="badge">Material 3</span>
+      <span class="badge">Media3 / ExoPlayer</span>
+      <span class="badge">100% Offline</span>
+      <span class="badge">No Ads</span>
+    </div>
+  </header>
+
+  <p class="lead">Tarang is a calm, focused music player for the songs that already live on your phone. Tag the exact moments inside any track — a chorus, a quote, a learning point — and export them as clean, named clips with one tap. No accounts. No cloud. No ads. No tracking. Just your library, beautifully presented.</p>
+
+  <h2 id="features">What's inside</h2>
+  <div class="feature-grid">
+    <div class="feature">
+      <h3>Audio bookmarks</h3>
+      <p>Tap Edit on any track and drop bookmarks at the exact moments that matter. Each bookmark gets a name and position. Scrub between them, rename, delete — your highlights, organised the way you think.</p>
+    </div>
+    <div class="feature">
+      <h3>One-tap clip export</h3>
+      <p>Hit Export and Tarang slices the source file into clean, gapless clips — one per bookmark. MP3 sources stay raw MP3 (no quality loss); other formats export as M4A.</p>
+    </div>
+    <div class="feature">
+      <h3>Library, five ways</h3>
+      <p>Songs · Playlists · Folders · Favorites · Tagged. Browse by file structure when you need to, or by your own playlists when you don't.</p>
+    </div>
+    <div class="feature">
+      <h3>Real player, not a toy</h3>
+      <p>Lock-screen and Bluetooth controls, variable speed (0.5×–2×) with no pitch shift, shuffle, repeat, persistent queue, and a mini player that gets out of the way.</p>
+    </div>
+    <div class="feature">
+      <h3>Material 3, tuned</h3>
+      <p>Light / dark / system themes. Custom typography sized for long reading sessions. Tarang teal and a warm amber accent — easy on the eyes, day or night.</p>
+    </div>
+    <div class="feature">
+      <h3>Tiny &amp; offline</h3>
+      <p>Built on Android Media3 / ExoPlayer for rock-solid playback and battery efficiency. Small APK, fast cold starts, zero network use. Ever.</p>
+    </div>
+  </div>
+
+  <h2 id="formats">Supported formats</h2>
+  <p>MP3 · M4A / AAC · FLAC · OGG Vorbis · WAV · OPUS — anything ExoPlayer can decode.</p>
+
+  <h2 id="permissions">Permissions, and why</h2>
+  <table>
+    <thead><tr><th>Permission</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>READ_MEDIA_AUDIO</code></td><td>To find audio files on your device. Replaces <code>READ_EXTERNAL_STORAGE</code> on Android 13+. Used only locally; nothing leaves your phone.</td></tr>
+      <tr><td><code>READ_EXTERNAL_STORAGE</code></td><td>Same purpose, on Android 12 and below (max SDK 32).</td></tr>
+      <tr><td><code>FOREGROUND_SERVICE</code> + <code>FOREGROUND_SERVICE_MEDIA_PLAYBACK</code></td><td>Required by Android so playback continues when you switch apps or lock the screen. Declared as <code>mediaPlayback</code> only.</td></tr>
+      <tr><td><code>POST_NOTIFICATIONS</code></td><td>Powers the lock-screen / notification media controls.</td></tr>
+      <tr><td><code>MODIFY_AUDIO_SETTINGS</code></td><td>For pitch-corrected variable-speed playback.</td></tr>
+      <tr><td><code>BLUETOOTH</code> / <code>BLUETOOTH_CONNECT</code></td><td>So play / pause / next / prev work from Bluetooth headsets and car stereos.</td></tr>
+      <tr><td><code>WAKE_LOCK</code></td><td>Held briefly during clip export so the muxer can finish writing the file.</td></tr>
+    </tbody>
+  </table>
+  <p>Tarang requests no other permissions. Specifically — no internet, no location, no camera, no microphone, no contacts, no calendar.</p>
+
+  <h2 id="privacy">Privacy policy</h2>
+
+  <div class="meta">
+    <strong>App name:</strong> Tarang Music Player &nbsp;·&nbsp;
+    <strong>Package:</strong> <code>com.tarangplayer.app</code> &nbsp;·&nbsp;
+    <strong>Effective date:</strong> 8 May 2026 &nbsp;·&nbsp;
+    <strong>Developer:</strong> trystudios
+  </div>
+
+  <h3>The short version</h3>
+  <p>Tarang does not collect, transmit, or share any data about you. The app does not access the internet at all. There are no accounts, no sign-in, no cloud sync, no analytics SDKs, no crash reporters, no ad networks, no third-party trackers, and no advertising IDs read or written. Everything you do inside Tarang stays on your device.</p>
+
+  <h3>Data we collect</h3>
+  <p><strong>None that leaves your device.</strong> The only "data" Tarang reads is the audio files already stored on your phone, plus your own settings (theme, last-played track, playlists, bookmarks). All of that is stored on-device — in the app's private database and shared preferences — and is removed when you uninstall the app.</p>
+
+  <h3>Data we share</h3>
+  <p><strong>None.</strong> Tarang does not connect to any server we run, or any third party. It cannot share data because it does not make network requests.</p>
+
+  <h3>Permissions we request</h3>
+  <p>See the <a href="#permissions">Permissions</a> section above. Each is used only for its stated purpose, and none are used to read, derive, or transmit personal data.</p>
+
+  <h3>Children's privacy</h3>
+  <p>Tarang does not knowingly collect any data from anyone, including children. The app contains no advertising and no in-app purchases. It is suitable for all ages.</p>
+
+  <h3>Account data</h3>
+  <p>Tarang has no accounts and no sign-in. There is nothing to delete from a server because nothing was ever sent. To remove all app data, uninstall the app — Android will clear the app's private storage automatically.</p>
+
+  <h3>Exported audio clips</h3>
+  <p>When you export tagged clips, Tarang writes the resulting files into a <code>Tarang_Exports</code> folder next to the source file (or, if that folder is not writable on your device, into the app's own private external storage). The exported files contain only the audio you tagged. Nothing is uploaded.</p>
+
+  <h3>Security</h3>
+  <p>Because no data is transmitted, there is no transmission to encrypt and no server to breach. On-device data lives in Android's app-private storage, which is sandboxed by the operating system and not accessible to other apps without root.</p>
+
+  <h3>Changes to this policy</h3>
+  <p>If Tarang ever changes — e.g. adds an opt-in cloud feature — this page will be updated and the effective date above will change. Older versions of the app will continue to behave as described in the policy that shipped with them.</p>
+
+  <h3>Contact</h3>
+  <p>Questions, concerns, or bug reports: <a href="mailto:trystudios82@gmail.com">trystudios82@gmail.com</a>.</p>
+
+  <h2 id="oss">Open-source acknowledgements</h2>
+  <ul>
+    <li><a href="https://developer.android.com/jetpack" target="_blank" rel="noopener">AndroidX</a> — Compose, Lifecycle, Room, DataStore (Apache 2.0).</li>
+    <li><a href="https://developer.android.com/media/media3" target="_blank" rel="noopener">AndroidX Media3 / ExoPlayer</a> — playback engine and media-session integration (Apache 2.0).</li>
+    <li><a href="https://m3.material.io/" target="_blank" rel="noopener">Material 3</a> — design system and Compose components (Apache 2.0).</li>
+    <li><a href="https://fonts.google.com/icons" target="_blank" rel="noopener">Material Symbols</a> — icon glyphs (Apache 2.0).</li>
+  </ul>
+
+  <h2 id="contact">Contact</h2>
+  <p>Bug reports, feature ideas, and feedback are welcome — please <a href="mailto:trystudios82@gmail.com">drop me a line</a>.</p>
+
+  <footer>
+    <p>© 2026 · Tarang Music Player · Built by trystudios. No trackers. No ads. No nonsense.</p>
+  </footer>
+
+</div>
+</body>
+</html>
